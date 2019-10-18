@@ -99,7 +99,6 @@ func customReduce(_ arr: [Int], _ input: Int, _ closure:(Int, Int) -> Int) -> In
 
 func highFunctionInput(_ input: String) {
     let highFuncInputComponents = input.components(separatedBy: " ")
-    print(highFuncInputComponents)
     let arrayComponents = highFuncInputComponents[1].components(separatedBy: ",")
     let arrayComponentsInt = arrayComponents.map {Int($0) ?? 0}
     let highInteger = Int(highFuncInputComponents[4])
@@ -118,9 +117,11 @@ func highFunctionInput(_ input: String) {
     case highFuncInputComponents[0] == "filter":
         switch true {
         case highFuncInputComponents[3] == "<" :
-            print(customFilter((arrayComponentsInt), {$0 < (highInteger ?? 0)}))
+            for num in customFilter((arrayComponentsInt), {$0 < (highInteger ?? 0)}) {
+                print(num, terminator:",") }
         case highFuncInputComponents[3] == ">":
-            print(customFilter((arrayComponentsInt), {$0 < (highInteger ?? 0)}))
+            for num in customFilter((arrayComponentsInt), {$0 > (highInteger ?? 0)}) {
+                print(num, terminator:",") }
         default:
             print("Not valid operator")
         }
